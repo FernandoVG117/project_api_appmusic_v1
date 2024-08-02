@@ -1,7 +1,8 @@
 const express = require('express');
+const routerArtist = require('./artist.router');
 const router = express.Router();
 
-// colocar las rutas aquí
+router.use('/artists', routerArtist);
 
 
 module.exports = router;
