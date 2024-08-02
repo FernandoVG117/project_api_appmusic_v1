@@ -35,10 +35,21 @@ const update = catchError(async(req, res) => {
     return res.json(result[1][0]);
 });
 
+    // Set the artist into the genres.
+    // /genres/:id/artist
+const setArtists = catchError(async(req,res) => {
+    const { id } = req.params;
+    const genre = await Genre.findByPk(id);
+    await genre.setArtist(req.body);
+    const artists = await genre.getArtists()
+    return res.json(artists)
+});
+
 module.exports = {
     getAll,
     create,
     getOne,
     remove,
-    update
+    update,
+    setArtists,
 }
