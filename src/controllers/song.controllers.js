@@ -42,7 +42,7 @@ const update = catchError(async(req, res) => {
 const setGenres = catchError(async(req,res) => {
     const { id } = req.params;
     const song = await Song.findByPk(id);
-    await song.setGenre(req.body);
+    await song.setGenres(req.body);
     const genres = await song.getGenres();
     return res.json(genres);
 });
